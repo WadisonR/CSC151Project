@@ -9,7 +9,8 @@ public class Policy
     private double height;
     private double weight;
 
-    // No-argument constructor
+    // No argument constructor
+    // Sets the starting values
     public Policy()
     {
         policyNumber = "";
@@ -23,6 +24,7 @@ public class Policy
     }
 
     // Constructor with arguments
+    // Sets the policy information
     public Policy(String policyNum, String provider, String first,
                   String last, int policyAge, String smoking,
                   double policyHeight, double policyWeight)
@@ -37,7 +39,7 @@ public class Policy
         weight = policyWeight;
     }
 
-    // Setters
+    // Set methods
     public void setPolicyNumber(String policyNum)
     {
         policyNumber = policyNum;
@@ -78,7 +80,7 @@ public class Policy
         weight = policyWeight;
     }
 
-    // Getters
+    // Get methods
     public String getPolicyNumber()
     {
         return policyNumber;
@@ -119,30 +121,46 @@ public class Policy
         return weight;
     }
 
-    // Calculate and return BMI
+    // Figures out the BMI
     public double getBMI()
     {
-        return (weight * 703) / (height * height);
+        final double BMI_NUMBER = 703.0;
+
+        double bmi;
+        bmi = (weight * BMI_NUMBER) / (height * height);
+
+        return bmi;
     }
 
-    // Calculate and return policy price
+    // Figures out the price of the policy
     public double getPolicyPrice()
     {
-        double price = 600.0;
+        // Values used for the policy price
+        final double BASE_PRICE = 600.0;
+        final int AGE_LIMIT = 50;
+        final double AGE_FEE = 75.0;
+        final double SMOKER_FEE = 100.0;
+        final double BMI_LIMIT = 35.0;
+        final double BMI_FEE = 20.0;
 
-        if (age > 50)
+        double price = BASE_PRICE;
+
+        // Extra cost for being over 50
+        if (age > AGE_LIMIT)
         {
-            price = price + 75.0;
+            price = price + AGE_FEE;
         }
 
+        // Extra cost if they smoke
         if (smokingStatus.equalsIgnoreCase("smoker"))
         {
-            price = price + 100.0;
+            price = price + SMOKER_FEE;
         }
 
-        if (getBMI() > 35)
+        // Extra cost if BMI is over 35
+        if (getBMI() > BMI_LIMIT)
         {
-            price = price + ((getBMI() - 35) * 20);
+            price = price + ((getBMI() - BMI_LIMIT) * BMI_FEE);
         }
 
         return price;
