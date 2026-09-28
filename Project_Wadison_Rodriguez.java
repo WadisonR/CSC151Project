@@ -14,6 +14,9 @@ public class Project_Wadison_Rodriguez
         // ArrayList to hold the Policy objects
         ArrayList<Policy> policies = new ArrayList<Policy>();
 
+        int smokerCount = 0;
+        int nonSmokerCount = 0;
+
         // Read all the policies from the file
         while (inputFile.hasNext())
         {
@@ -62,8 +65,19 @@ public class Project_Wadison_Rodriguez
                                + policy.getWeight() + " pounds");
             System.out.printf("Policyholder's BMI: %.2f\n", policy.getBMI());
             System.out.printf("Policy Price: $%.2f\n", policy.getPolicyPrice());
+            
+            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+    {
+    smokerCount++;
+    }
+    else
+    {
+    nonSmokerCount++;
+    }
 
             System.out.println();
         }
+        System.out.println("The number of policies with a smoker is: " + smokerCount);
+        System.out.println("The number of policies with a non-smoker is: " + nonSmokerCount);
     }
 }
