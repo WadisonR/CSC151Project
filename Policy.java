@@ -9,8 +9,9 @@ public class Policy
     private double height;
     private double weight;
 
-    // No argument constructor
-    // Sets the starting values
+    /**
+       No argument constructor.
+    */
     public Policy()
     {
         policyNumber = "";
@@ -23,8 +24,17 @@ public class Policy
         weight = 0.0;
     }
 
-    // Constructor with arguments
-    // Sets the policy information
+    /**
+       Constructor that sets all the policy information.
+       @param policyNum policy number
+       @param provider provider name
+       @param first first name
+       @param last last name
+       @param policyAge age
+       @param smoking smoking status
+       @param policyHeight height
+       @param policyWeight weight
+    */
     public Policy(String policyNum, String provider, String first,
                   String last, int policyAge, String smoking,
                   double policyHeight, double policyWeight)
@@ -39,128 +49,180 @@ public class Policy
         weight = policyWeight;
     }
 
-    // Set methods
+    /**
+       Sets the policy number.
+       @param policyNum policy number
+    */
     public void setPolicyNumber(String policyNum)
     {
         policyNumber = policyNum;
     }
 
+    /**
+       Sets the provider name.
+       @param provider provider name
+    */
     public void setProviderName(String provider)
     {
         providerName = provider;
     }
 
+    /**
+       Sets the first name.
+       @param first first name
+    */
     public void setFirstName(String first)
     {
         firstName = first;
     }
 
+    /**
+       Sets the last name.
+       @param last last name
+    */
     public void setLastName(String last)
     {
         lastName = last;
     }
 
+    /**
+       Sets the age.
+       @param policyAge age
+    */
     public void setAge(int policyAge)
     {
         age = policyAge;
     }
 
+    /**
+       Sets the smoking status.
+       @param smoking smoking status
+    */
     public void setSmokingStatus(String smoking)
     {
         smokingStatus = smoking;
     }
 
+    /**
+       Sets the height.
+       @param policyHeight height
+    */
     public void setHeight(double policyHeight)
     {
         height = policyHeight;
     }
 
+    /**
+       Sets the weight.
+       @param policyWeight weight
+    */
     public void setWeight(double policyWeight)
     {
         weight = policyWeight;
     }
 
-    // Get methods
+    /**
+       Gets the policy number.
+       @return policy number
+    */
     public String getPolicyNumber()
     {
         return policyNumber;
     }
 
+    /**
+       Gets the provider name.
+       @return provider name
+    */
     public String getProviderName()
     {
         return providerName;
     }
 
+    /**
+       Gets the first name.
+       @return first name
+    */
     public String getFirstName()
     {
         return firstName;
     }
 
+    /**
+       Gets the last name.
+       @return last name
+    */
     public String getLastName()
     {
         return lastName;
     }
 
+    /**
+       Gets the age.
+       @return age
+    */
     public int getAge()
     {
         return age;
     }
 
+    /**
+       Gets the smoking status.
+       @return smoking status
+    */
     public String getSmokingStatus()
     {
         return smokingStatus;
     }
 
+    /**
+       Gets the height.
+       @return height
+    */
     public double getHeight()
     {
         return height;
     }
 
+    /**
+       Gets the weight.
+       @return weight
+    */
     public double getWeight()
     {
         return weight;
     }
 
-    // Figures out the BMI
+    /**
+       Calculates the BMI.
+       @return BMI
+    */
     public double getBMI()
     {
-        final double BMI_NUMBER = 703.0;
-
-        double bmi;
-        bmi = (weight * BMI_NUMBER) / (height * height);
-
-        return bmi;
+        return (weight * 703) / (height * height);
     }
 
-    // Figures out the price of the policy
+    /**
+       Calculates the policy price.
+       @return policy price
+    */
     public double getPolicyPrice()
     {
-        // Values used for the policy price
-        final double BASE_PRICE = 600.0;
-        final int AGE_LIMIT = 50;
-        final double AGE_FEE = 75.0;
-        final double SMOKER_FEE = 100.0;
-        final double BMI_LIMIT = 35.0;
-        final double BMI_FEE = 20.0;
+        double price = 600.0;
 
-        double price = BASE_PRICE;
-
-        // Extra cost for being over 50
-        if (age > AGE_LIMIT)
+        if (age > 50)
         {
-            price = price + AGE_FEE;
+            price = price + 75.0;
         }
 
-        // Extra cost if they smoke
         if (smokingStatus.equalsIgnoreCase("smoker"))
         {
-            price = price + SMOKER_FEE;
+            price = price + 100.0;
         }
 
-        // Extra cost if BMI is over 35
-        if (getBMI() > BMI_LIMIT)
+        if (getBMI() > 35)
         {
-            price = price + ((getBMI() - BMI_LIMIT) * BMI_FEE);
+            price = price + ((getBMI() - 35) * 20);
         }
 
         return price;
