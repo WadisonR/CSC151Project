@@ -1,4 +1,3 @@
-```java
 public class Policy
 {
     private String policyNumber;
