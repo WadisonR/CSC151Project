@@ -32,10 +32,13 @@ public class Project_Wadison_Rodriguez
             double height = Double.parseDouble(inputFile.nextLine());
             double weight = Double.parseDouble(inputFile.nextLine());
 
+            // Create a PolicyHolder object
+            PolicyHolder holder = new PolicyHolder(firstName, lastName,
+                                      age, smokingStatus,
+                                      height, weight);
+
             // Create a Policy object
-            Policy policy = new Policy(policyNumber, providerName,
-                                       firstName, lastName, age,
-                                       smokingStatus, height, weight);
+            Policy policy = new Policy(policyNumber, providerName, holder);
 
             // Add the Policy object to the ArrayList
             policies.add(policy);
@@ -52,21 +55,9 @@ public class Project_Wadison_Rodriguez
         // Display all the policies
         for (Policy policy : policies)
         {
-            System.out.println("Policy Number: " + policy.getPolicyNumber());
-            System.out.println("Provider Name: " + policy.getProviderName());
-            System.out.println("Policyholder's First Name: " + policy.getFirstName());
-            System.out.println("Policyholder's Last Name: " + policy.getLastName());
-            System.out.println("Policyholder's Age: " + policy.getAge());
-            System.out.println("Policyholder's Smoking Status (smoker/non-smoker): "
-                               + policy.getSmokingStatus());
-            System.out.println("Policyholder's Height: "
-                               + policy.getHeight() + " inches");
-            System.out.println("Policyholder's Weight: "
-                               + policy.getWeight() + " pounds");
-            System.out.printf("Policyholder's BMI: %.2f\n", policy.getBMI());
-            System.out.printf("Policy Price: $%.2f\n", policy.getPolicyPrice());
+            System.out.println(policy.toString());
             
-            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+            if (policy.getPolicyHolder().getSmokingStatus().equalsIgnoreCase("smoker"))
     {
     smokerCount++;
     }
