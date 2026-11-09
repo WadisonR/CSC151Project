@@ -3,6 +3,7 @@ public class Policy
     private String policyNumber;
     private String providerName;
     private PolicyHolder policyHolder;
+    private static int policyCount = 0;
 
     /**
        No argument constructor.
@@ -12,6 +13,7 @@ public class Policy
         policyNumber = "";
         providerName = "";
         policyHolder = new PolicyHolder();
+        policyCount++;
     }
 
     /**
@@ -26,6 +28,7 @@ public class Policy
         policyNumber = policyNum;
         providerName = provider;
         policyHolder = holder;
+        policyCount++;
     }
 
     /**
@@ -130,5 +133,13 @@ public class Policy
 
         return str;
     }
+    /**
+   Returns the number of policies created.
+   @return number of policies
+   */
+    public static int getPolicyCount()
+{
+    return policyCount;
+}
 
 }
