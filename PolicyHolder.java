@@ -98,5 +98,32 @@ public class PolicyHolder
     public double getBMI()
     {
         return (weight * 703) / (height * height);
+    }    
+    public String toString()
+    {
+        String str = "Policyholder's First Name: "
+                     + firstName + "\n";
+
+        str += "Policyholder's Last Name: "
+               + lastName + "\n";
+
+        str += "Policyholder's Age: "
+               + age + "\n";
+
+        str += "Policyholder's Smoking Status (Y/N): "
+               + smokingStatus + "\n";
+
+        str += String.format(
+               "Policyholder's Height: %.1f inches\n",
+               height);
+
+        str += String.format(
+               "Policyholder's Weight: %.1f pounds\n",
+               weight);
+
+        str += String.format(
+               "Policyholder's BMI: %.2f", getBMI());
+
+        return str;
     }
 }
