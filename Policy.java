@@ -109,4 +109,26 @@ public class Policy
 
         return price;
     }
+    
+    /**
+       Returns the policy information.
+       @return policy information
+    */
+    public String toString()
+    {
+        String str = "Policy Number: "
+                     + policyNumber + "\n";
+
+        str += "Provider Name: "
+               + providerName + "\n";
+
+        str += policyHolder.toString() + "\n";
+
+        str += String.format(
+               "Policy Price: $%.2f",
+               getPolicyPrice());
+
+        return str;
+    }
+
 }
