@@ -55,7 +55,7 @@ public class Project_Wadison_Rodriguez
         // Display all the policies
         for (Policy policy : policies)
         {
-            System.out.println(policy.toString());
+            System.out.println(policy);
             
             if (policy.getPolicyHolder().getSmokingStatus().equalsIgnoreCase("smoker"))
     {
@@ -68,6 +68,9 @@ public class Project_Wadison_Rodriguez
 
             System.out.println();
         }
+        System.out.println("There were " + Policy.getPolicyCount()
+                   + " Policy objects created.");
+                   
         System.out.println("The number of policies with a smoker is: " + smokerCount);
         System.out.println("The number of policies with a non-smoker is: " + nonSmokerCount);
     }
